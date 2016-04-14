@@ -5,7 +5,7 @@ class NotasTurmaLogica{
 		String [] nomes = new String[10];
 
 		float[] notas = new float [10];
-		
+		//notas.length
 
 		//System.out.println("Nomes " + nomes);
 
@@ -32,33 +32,20 @@ class NotasTurmaLogica{
 
 
 		}
-
+		for (int i =0; i<10;i++){
+			nomes[i] = "Aluno Matricula - 00 " + ( i+20);
+			notas[i] = 6.5F + 0.2F*i;
+		//		if (i!=0){
+		//			notas[i] = notas[i-1]+0.2F;
+		//		}else 
+		//		notas[i] = 6.5F;
+		}
+		for (int i =0; i<10;i++){
+			System.out.println(nomes[i]+" - "+ notas[i]);
+		}
+		System.out.println("tamanho notas "+ notas.length);
+			
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
