@@ -17,8 +17,16 @@ class TesteCelular {
 		motox.sistemaOperacional = "Android";
 		motox.tamanho = 13.5f;
 		motox.tamanhoTela =4.5f;
+		motox.banda = "D";
+		motox.tecnologia = "3G";
+		
+		Celular motox2 = new Celular();
+
+		motox2 = motox; 
 		
 		System.out.println("Moto x " + motox);
+		
+		System.out.println("Moto x2 " + motox2);
 	}
 
 }

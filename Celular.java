@@ -12,6 +12,9 @@ class Celular {
 	String modelo;
 	String nome;
 	String sistemaOperacional;
+	String banda;
+	String tecnologia;
+	
 	
 	
 
