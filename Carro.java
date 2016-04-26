@@ -5,6 +5,7 @@ public class Carro {
 	String modelo;
 	String motor;
 	String TipoCombustivel;
+	String marca;
 	
 	public boolean ligar() {
 		return false;
