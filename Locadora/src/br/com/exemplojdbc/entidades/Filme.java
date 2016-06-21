@@ -78,6 +78,11 @@ public class Filme {
 		} else if (!titulo.equals(other.titulo))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Filme [id=" + id + ", titulo=" + titulo + ", genero=" + genero + ", duracao=" + duracao + ", diretor="
+				+ diretor + "]";
 	} 
 	
 	
