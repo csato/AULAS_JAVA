@@ -7,6 +7,17 @@ public class Filme {
 	private int duracao;
 	private String diretor;
 	
+	public Filme() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Filme(String titulo, String genero, int duracao, String diretor) {
+		super();
+		this.titulo = titulo;
+		this.genero = genero;
+		this.duracao = duracao;
+		this.diretor = diretor;
+	}
 	public int getId() {
 		return id;
 	}

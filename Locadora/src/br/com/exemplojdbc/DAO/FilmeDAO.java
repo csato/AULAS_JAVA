@@ -1,11 +1,13 @@
 package br.com.exemplojdbc.DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import br.com.exemplojdbc.entidades.Filme;
 
 
@@ -47,4 +49,71 @@ public class FilmeDAO extends GenericDAO {
 		return filme;
 	}
 
-}
+	public Filme getFimebyTitulo (String titulo) throws SQLException{
+		
+		Filme filme = new Filme();
+		
+		
+		String sql= "SELECT * FRO FILMES WHERE TITULO =?"; //mais seguro 
+		
+		Connection con = getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, titulo);//1 pq é o primeiro ponto de interrogação
+		
+		ResultSet re = ps.executeQuery();
+		
+		if (re.next()) {
+			
+			filme = popularFilmes(re);
+		}
+		
+		return filme;
+	}
+	
+	
+	public void insert(Filme filme) throws SQLException{
+		
+		String sql ="INSERT INTO FILMES (TITULO,GENERO,DURACAO,DIRETOR) "
+				+ "VALUES(?,?,?,?)";
+		
+		Connection con = getConnection();
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		//ordem das colunas do insert - MATTERS
+		ps.setString(1, filme.getTitulo());
+		ps.setString(2, filme.getGenero());
+		ps.setInt(3, filme.getDuracao());
+		ps.setString(4, filme.getDiretor());
+		
+		ps.execute();
+		
+		ps.close();
+		con.close();
+		
+	}
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

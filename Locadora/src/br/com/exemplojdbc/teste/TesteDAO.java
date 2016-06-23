@@ -14,11 +14,18 @@ public class TesteDAO {
 			//System.out.println(filmeDAO.getConnection());
 						
 			try {
+				
+				Filme novoFilme = new Filme("T3","T3",125,"T3");
+				
+				filmeDAO.insert(novoFilme);
+				
 				List<Filme> filmes =  filmeDAO.list();
 				for (Filme filme : filmes) {
 					
-					System.out.println(filme);
-				}
+				
+				System.out.println(filme);		
+			}
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
