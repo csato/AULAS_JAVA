@@ -16,6 +16,11 @@ import javax.swing.table.DefaultTableModel;
 
 import br.com.exemplojdbc.controller.FilmeController;
 import br.com.exexmplojdbc.entidades.Filme;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal {
 
@@ -84,5 +89,55 @@ public class TelaPrincipal {
 			}
 		});
 		scrollPane.setViewportView(table);
+
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 129, 21);
+		frame.getContentPane().add(menuBar);
+
+		JMenu mnOpoes = new JMenu("Opçoes");
+		menuBar.add(mnOpoes);
+
+		JMenuItem mntmAdicionarFilme = new JMenuItem("Adicionar Filme");
+		mntmAdicionarFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				AdicionarFilme adicionarFilme = new AdicionarFilme();
+				adicionarFilme.setVisible(true);
+			}
+		});
+		mnOpoes.add(mntmAdicionarFilme);
+
+		JMenuItem mntmExportar = new JMenuItem("Exportar");
+		mntmExportar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				filmeController.exportarFilmes();
+
+			}
+		});
+		mnOpoes.add(mntmExportar);
+
+		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				limparTabela();
+
+				popularTabela();
+
+			}
+
+			private void limparTabela() {
+
+				DefaultTableModel model = (DefaultTableModel) table.getModel();
+
+				for (int count = model.getRowCount() - 1; count >= 0; count--) {
+					model.removeRow(count);
+				}
+
+			}
+		});
+		btnRefresh.setBounds(302, 12, 117, 25);
+		frame.getContentPane().add(btnRefresh);
 	}
 }
